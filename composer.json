@@ -1,0 +1,30 @@
+{
+    "name": "pggns/php-midoco-api-workflow",
+    "description": "(Unofficial) Midoco Workflow API for use in PHP",
+    "require": {
+        "php": ">=7.4",
+        "ext-dom": "*",
+        "ext-mbstring": "*",
+        "ext-soap": "*",
+        "wsdltophp/packagebase": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pggns\\MidocoApi\\Workflow\\": "src"
+        }
+    },
+    "type": "library",
+    "keywords": [
+        "php",
+        "api",
+        "midoco"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "pggns",
+            "email": "projects@pggns.de",
+            "role": "Owner"
+        }
+    ]
+}
