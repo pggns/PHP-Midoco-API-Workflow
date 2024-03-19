@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for LogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class LogDTO extends AbstractStructBase
 {
     /**

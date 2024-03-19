@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteTaskViewResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteTaskViewResponse extends AbstractStructBase
 {
 }

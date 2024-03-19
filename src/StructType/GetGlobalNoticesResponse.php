@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetGlobalNoticesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetGlobalNoticesResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetGlobalNoticesResponse extends AbstractStructBase
      * - ref: MidocoGlobalNotice
      * @var \Pggns\MidocoApi\Workflow\StructType\MidocoGlobalNotice[]
      */
-    protected array $MidocoGlobalNotice = [];
+    protected ?array $MidocoGlobalNotice = null;
     /**
      * The sortOrder
      * @var string|null
@@ -104,7 +105,7 @@ class GetGlobalNoticesResponse extends AbstractStructBase
      * @param int $finishUser
      * @param string $delegationQueue
      */
-    public function __construct(array $midocoGlobalNotice = [], ?string $sortOrder = null, ?string $orgunitName = null, ?string $selection = null, ?string $fromFinishTimestamp = null, ?string $untilFinishTimestamp = null, ?string $fromCreationTimestamp = null, ?string $untilCreationTimestamp = null, ?string $notice = null, ?string $taskType = null, ?int $finishUser = null, ?string $delegationQueue = null)
+    public function __construct(?array $midocoGlobalNotice = null, ?string $sortOrder = null, ?string $orgunitName = null, ?string $selection = null, ?string $fromFinishTimestamp = null, ?string $untilFinishTimestamp = null, ?string $fromCreationTimestamp = null, ?string $untilCreationTimestamp = null, ?string $notice = null, ?string $taskType = null, ?int $finishUser = null, ?string $delegationQueue = null)
     {
         $this
             ->setMidocoGlobalNotice($midocoGlobalNotice)
@@ -124,18 +125,22 @@ class GetGlobalNoticesResponse extends AbstractStructBase
      * Get MidocoGlobalNotice value
      * @return \Pggns\MidocoApi\Workflow\StructType\MidocoGlobalNotice[]
      */
-    public function getMidocoGlobalNotice(): array
+    public function getMidocoGlobalNotice(): ?array
     {
         return $this->MidocoGlobalNotice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoGlobalNotice method
+     * This method is responsible for validating the value(s) passed to the setMidocoGlobalNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoGlobalNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoGlobalNoticeForArrayConstraintsFromSetMidocoGlobalNotice(array $values = []): string
+    public static function validateMidocoGlobalNoticeForArrayConstraintFromSetMidocoGlobalNotice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getGlobalNoticesResponseMidocoGlobalNoticeItem) {
@@ -157,10 +162,10 @@ class GetGlobalNoticesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoGlobalNotice[] $midocoGlobalNotice
      * @return \Pggns\MidocoApi\Workflow\StructType\GetGlobalNoticesResponse
      */
-    public function setMidocoGlobalNotice(array $midocoGlobalNotice = []): self
+    public function setMidocoGlobalNotice(?array $midocoGlobalNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoGlobalNoticeArrayErrorMessage = self::validateMidocoGlobalNoticeForArrayConstraintsFromSetMidocoGlobalNotice($midocoGlobalNotice))) {
+        if ('' !== ($midocoGlobalNoticeArrayErrorMessage = self::validateMidocoGlobalNoticeForArrayConstraintFromSetMidocoGlobalNotice($midocoGlobalNotice))) {
             throw new InvalidArgumentException($midocoGlobalNoticeArrayErrorMessage, __LINE__);
         }
         $this->MidocoGlobalNotice = $midocoGlobalNotice;

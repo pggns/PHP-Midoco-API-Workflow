@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RuleCriteriaOrderAttributeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RuleCriteriaOrderAttributeDTO extends AbstractStructBase
 {
     /**

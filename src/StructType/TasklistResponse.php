@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TasklistResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TasklistResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteRuleCriteriaOrderAttributeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteRuleCriteriaOrderAttributeRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskQueuesChgLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskQueuesChgLogDTO extends AbstractStructBase
 {
     /**

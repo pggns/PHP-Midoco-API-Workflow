@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskViewTimeRestrictionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskViewTimeRestrictionDTO extends AbstractStructBase
 {
     /**

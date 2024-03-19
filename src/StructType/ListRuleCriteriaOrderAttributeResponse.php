@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListRuleCriteriaOrderAttributeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListRuleCriteriaOrderAttributeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListRuleCriteriaOrderAttributeResponse extends AbstractStructBase
      * - ref: MidocoRuleCriteriaOrderAttribute
      * @var \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaOrderAttributeDTO[]
      */
-    protected array $MidocoRuleCriteriaOrderAttribute = [];
+    protected ?array $MidocoRuleCriteriaOrderAttribute = null;
     /**
      * Constructor method for ListRuleCriteriaOrderAttributeResponse
      * @uses ListRuleCriteriaOrderAttributeResponse::setMidocoRuleCriteriaOrderAttribute()
      * @param \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaOrderAttributeDTO[] $midocoRuleCriteriaOrderAttribute
      */
-    public function __construct(array $midocoRuleCriteriaOrderAttribute = [])
+    public function __construct(?array $midocoRuleCriteriaOrderAttribute = null)
     {
         $this
             ->setMidocoRuleCriteriaOrderAttribute($midocoRuleCriteriaOrderAttribute);
@@ -36,18 +37,22 @@ class ListRuleCriteriaOrderAttributeResponse extends AbstractStructBase
      * Get MidocoRuleCriteriaOrderAttribute value
      * @return \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaOrderAttributeDTO[]
      */
-    public function getMidocoRuleCriteriaOrderAttribute(): array
+    public function getMidocoRuleCriteriaOrderAttribute(): ?array
     {
         return $this->MidocoRuleCriteriaOrderAttribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRuleCriteriaOrderAttribute method
+     * This method is responsible for validating the value(s) passed to the setMidocoRuleCriteriaOrderAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRuleCriteriaOrderAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRuleCriteriaOrderAttributeForArrayConstraintsFromSetMidocoRuleCriteriaOrderAttribute(array $values = []): string
+    public static function validateMidocoRuleCriteriaOrderAttributeForArrayConstraintFromSetMidocoRuleCriteriaOrderAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listRuleCriteriaOrderAttributeResponseMidocoRuleCriteriaOrderAttributeItem) {
@@ -69,10 +74,10 @@ class ListRuleCriteriaOrderAttributeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaOrderAttributeDTO[] $midocoRuleCriteriaOrderAttribute
      * @return \Pggns\MidocoApi\Workflow\StructType\ListRuleCriteriaOrderAttributeResponse
      */
-    public function setMidocoRuleCriteriaOrderAttribute(array $midocoRuleCriteriaOrderAttribute = []): self
+    public function setMidocoRuleCriteriaOrderAttribute(?array $midocoRuleCriteriaOrderAttribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRuleCriteriaOrderAttributeArrayErrorMessage = self::validateMidocoRuleCriteriaOrderAttributeForArrayConstraintsFromSetMidocoRuleCriteriaOrderAttribute($midocoRuleCriteriaOrderAttribute))) {
+        if ('' !== ($midocoRuleCriteriaOrderAttributeArrayErrorMessage = self::validateMidocoRuleCriteriaOrderAttributeForArrayConstraintFromSetMidocoRuleCriteriaOrderAttribute($midocoRuleCriteriaOrderAttribute))) {
             throw new InvalidArgumentException($midocoRuleCriteriaOrderAttributeArrayErrorMessage, __LINE__);
         }
         $this->MidocoRuleCriteriaOrderAttribute = $midocoRuleCriteriaOrderAttribute;

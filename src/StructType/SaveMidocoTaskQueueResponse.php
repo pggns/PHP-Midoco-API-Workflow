@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMidocoTaskQueueResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoTaskQueueResponse extends AbstractStructBase
 {
 }

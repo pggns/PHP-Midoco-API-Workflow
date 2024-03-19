@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskFilterDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskFilterDTO extends AbstractStructBase
 {
     /**
@@ -33,7 +34,7 @@ class TaskFilterDTO extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $userIds = [];
+    protected ?array $userIds = null;
     /**
      * The orgUnits
      * Meta information extracted from the WSDL
@@ -41,7 +42,7 @@ class TaskFilterDTO extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $orgUnits = [];
+    protected ?array $orgUnits = null;
     /**
      * The queues
      * Meta information extracted from the WSDL
@@ -49,7 +50,7 @@ class TaskFilterDTO extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $queues = [];
+    protected ?array $queues = null;
     /**
      * The taskTypes
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class TaskFilterDTO extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $taskTypes = [];
+    protected ?array $taskTypes = null;
     /**
      * The toDueDate
      * @var string|null
@@ -91,7 +92,7 @@ class TaskFilterDTO extends AbstractStructBase
      * - ref: MidocoTaskViewColumns
      * @var \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[]
      */
-    protected array $MidocoTaskViewColumns = [];
+    protected ?array $MidocoTaskViewColumns = null;
     /**
      * Constructor method for TaskFilterDTO
      * @uses TaskFilterDTO::setFromDueDate()
@@ -119,7 +120,7 @@ class TaskFilterDTO extends AbstractStructBase
      * @param string $toPriority
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[] $midocoTaskViewColumns
      */
-    public function __construct(string $fromDueDate, ?string $taskViewName = null, array $userIds = [], array $orgUnits = [], array $queues = [], array $taskTypes = [], ?string $toDueDate = null, ?string $fromDelegationDate = null, ?string $toDelegationDate = null, ?string $fromPriority = null, ?string $toPriority = null, array $midocoTaskViewColumns = [])
+    public function __construct(string $fromDueDate, ?string $taskViewName = null, ?array $userIds = null, ?array $orgUnits = null, ?array $queues = null, ?array $taskTypes = null, ?string $toDueDate = null, ?string $fromDelegationDate = null, ?string $toDelegationDate = null, ?string $fromPriority = null, ?string $toPriority = null, ?array $midocoTaskViewColumns = null)
     {
         $this
             ->setFromDueDate($fromDueDate)
@@ -185,18 +186,22 @@ class TaskFilterDTO extends AbstractStructBase
      * Get userIds value
      * @return int[]
      */
-    public function getUserIds(): array
+    public function getUserIds(): ?array
     {
         return $this->userIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setUserIds method
+     * This method is responsible for validating the value(s) passed to the setUserIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUserIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUserIdsForArrayConstraintsFromSetUserIds(array $values = []): string
+    public static function validateUserIdsForArrayConstraintFromSetUserIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskFilterDTOUserIdsItem) {
@@ -218,10 +223,10 @@ class TaskFilterDTO extends AbstractStructBase
      * @param int[] $userIds
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskFilterDTO
      */
-    public function setUserIds(array $userIds = []): self
+    public function setUserIds(?array $userIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($userIdsArrayErrorMessage = self::validateUserIdsForArrayConstraintsFromSetUserIds($userIds))) {
+        if ('' !== ($userIdsArrayErrorMessage = self::validateUserIdsForArrayConstraintFromSetUserIds($userIds))) {
             throw new InvalidArgumentException($userIdsArrayErrorMessage, __LINE__);
         }
         $this->userIds = $userIds;
@@ -248,18 +253,22 @@ class TaskFilterDTO extends AbstractStructBase
      * Get orgUnits value
      * @return string[]
      */
-    public function getOrgUnits(): array
+    public function getOrgUnits(): ?array
     {
         return $this->orgUnits;
     }
     /**
-     * This method is responsible for validating the values passed to the setOrgUnits method
+     * This method is responsible for validating the value(s) passed to the setOrgUnits method
      * This method is willingly generated in order to preserve the one-line inline validation within the setOrgUnits method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateOrgUnitsForArrayConstraintsFromSetOrgUnits(array $values = []): string
+    public static function validateOrgUnitsForArrayConstraintFromSetOrgUnits(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskFilterDTOOrgUnitsItem) {
@@ -281,10 +290,10 @@ class TaskFilterDTO extends AbstractStructBase
      * @param string[] $orgUnits
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskFilterDTO
      */
-    public function setOrgUnits(array $orgUnits = []): self
+    public function setOrgUnits(?array $orgUnits = null): self
     {
         // validation for constraint: array
-        if ('' !== ($orgUnitsArrayErrorMessage = self::validateOrgUnitsForArrayConstraintsFromSetOrgUnits($orgUnits))) {
+        if ('' !== ($orgUnitsArrayErrorMessage = self::validateOrgUnitsForArrayConstraintFromSetOrgUnits($orgUnits))) {
             throw new InvalidArgumentException($orgUnitsArrayErrorMessage, __LINE__);
         }
         $this->orgUnits = $orgUnits;
@@ -311,18 +320,22 @@ class TaskFilterDTO extends AbstractStructBase
      * Get queues value
      * @return string[]
      */
-    public function getQueues(): array
+    public function getQueues(): ?array
     {
         return $this->queues;
     }
     /**
-     * This method is responsible for validating the values passed to the setQueues method
+     * This method is responsible for validating the value(s) passed to the setQueues method
      * This method is willingly generated in order to preserve the one-line inline validation within the setQueues method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateQueuesForArrayConstraintsFromSetQueues(array $values = []): string
+    public static function validateQueuesForArrayConstraintFromSetQueues(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskFilterDTOQueuesItem) {
@@ -344,10 +357,10 @@ class TaskFilterDTO extends AbstractStructBase
      * @param string[] $queues
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskFilterDTO
      */
-    public function setQueues(array $queues = []): self
+    public function setQueues(?array $queues = null): self
     {
         // validation for constraint: array
-        if ('' !== ($queuesArrayErrorMessage = self::validateQueuesForArrayConstraintsFromSetQueues($queues))) {
+        if ('' !== ($queuesArrayErrorMessage = self::validateQueuesForArrayConstraintFromSetQueues($queues))) {
             throw new InvalidArgumentException($queuesArrayErrorMessage, __LINE__);
         }
         $this->queues = $queues;
@@ -374,18 +387,22 @@ class TaskFilterDTO extends AbstractStructBase
      * Get taskTypes value
      * @return string[]
      */
-    public function getTaskTypes(): array
+    public function getTaskTypes(): ?array
     {
         return $this->taskTypes;
     }
     /**
-     * This method is responsible for validating the values passed to the setTaskTypes method
+     * This method is responsible for validating the value(s) passed to the setTaskTypes method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTaskTypes method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTaskTypesForArrayConstraintsFromSetTaskTypes(array $values = []): string
+    public static function validateTaskTypesForArrayConstraintFromSetTaskTypes(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskFilterDTOTaskTypesItem) {
@@ -407,10 +424,10 @@ class TaskFilterDTO extends AbstractStructBase
      * @param string[] $taskTypes
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskFilterDTO
      */
-    public function setTaskTypes(array $taskTypes = []): self
+    public function setTaskTypes(?array $taskTypes = null): self
     {
         // validation for constraint: array
-        if ('' !== ($taskTypesArrayErrorMessage = self::validateTaskTypesForArrayConstraintsFromSetTaskTypes($taskTypes))) {
+        if ('' !== ($taskTypesArrayErrorMessage = self::validateTaskTypesForArrayConstraintFromSetTaskTypes($taskTypes))) {
             throw new InvalidArgumentException($taskTypesArrayErrorMessage, __LINE__);
         }
         $this->taskTypes = $taskTypes;
@@ -552,18 +569,22 @@ class TaskFilterDTO extends AbstractStructBase
      * Get MidocoTaskViewColumns value
      * @return \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[]
      */
-    public function getMidocoTaskViewColumns(): array
+    public function getMidocoTaskViewColumns(): ?array
     {
         return $this->MidocoTaskViewColumns;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTaskViewColumns method
+     * This method is responsible for validating the value(s) passed to the setMidocoTaskViewColumns method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTaskViewColumns method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTaskViewColumnsForArrayConstraintsFromSetMidocoTaskViewColumns(array $values = []): string
+    public static function validateMidocoTaskViewColumnsForArrayConstraintFromSetMidocoTaskViewColumns(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskFilterDTOMidocoTaskViewColumnsItem) {
@@ -585,10 +606,10 @@ class TaskFilterDTO extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[] $midocoTaskViewColumns
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskFilterDTO
      */
-    public function setMidocoTaskViewColumns(array $midocoTaskViewColumns = []): self
+    public function setMidocoTaskViewColumns(?array $midocoTaskViewColumns = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTaskViewColumnsArrayErrorMessage = self::validateMidocoTaskViewColumnsForArrayConstraintsFromSetMidocoTaskViewColumns($midocoTaskViewColumns))) {
+        if ('' !== ($midocoTaskViewColumnsArrayErrorMessage = self::validateMidocoTaskViewColumnsForArrayConstraintFromSetMidocoTaskViewColumns($midocoTaskViewColumns))) {
             throw new InvalidArgumentException($midocoTaskViewColumnsArrayErrorMessage, __LINE__);
         }
         $this->MidocoTaskViewColumns = $midocoTaskViewColumns;

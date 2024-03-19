@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskViewContextOld StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskViewContextOld extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class TaskViewContextOld extends AbstractStructBase
      * - ref: TaskViewSingleContext
      * @var \Pggns\MidocoApi\Workflow\StructType\TaskViewSingleContext[]
      */
-    protected array $TaskViewSingleContext = [];
+    protected ?array $TaskViewSingleContext = null;
     /**
      * Constructor method for TaskViewContextOld
      * @uses TaskViewContextOld::setTaskViewSingleContext()
      * @param \Pggns\MidocoApi\Workflow\StructType\TaskViewSingleContext[] $taskViewSingleContext
      */
-    public function __construct(array $taskViewSingleContext = [])
+    public function __construct(?array $taskViewSingleContext = null)
     {
         $this
             ->setTaskViewSingleContext($taskViewSingleContext);
@@ -36,18 +37,22 @@ class TaskViewContextOld extends AbstractStructBase
      * Get TaskViewSingleContext value
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskViewSingleContext[]
      */
-    public function getTaskViewSingleContext(): array
+    public function getTaskViewSingleContext(): ?array
     {
         return $this->TaskViewSingleContext;
     }
     /**
-     * This method is responsible for validating the values passed to the setTaskViewSingleContext method
+     * This method is responsible for validating the value(s) passed to the setTaskViewSingleContext method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTaskViewSingleContext method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTaskViewSingleContextForArrayConstraintsFromSetTaskViewSingleContext(array $values = []): string
+    public static function validateTaskViewSingleContextForArrayConstraintFromSetTaskViewSingleContext(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskViewContextOldTaskViewSingleContextItem) {
@@ -69,10 +74,10 @@ class TaskViewContextOld extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\TaskViewSingleContext[] $taskViewSingleContext
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskViewContextOld
      */
-    public function setTaskViewSingleContext(array $taskViewSingleContext = []): self
+    public function setTaskViewSingleContext(?array $taskViewSingleContext = null): self
     {
         // validation for constraint: array
-        if ('' !== ($taskViewSingleContextArrayErrorMessage = self::validateTaskViewSingleContextForArrayConstraintsFromSetTaskViewSingleContext($taskViewSingleContext))) {
+        if ('' !== ($taskViewSingleContextArrayErrorMessage = self::validateTaskViewSingleContextForArrayConstraintFromSetTaskViewSingleContext($taskViewSingleContext))) {
             throw new InvalidArgumentException($taskViewSingleContextArrayErrorMessage, __LINE__);
         }
         $this->TaskViewSingleContext = $taskViewSingleContext;

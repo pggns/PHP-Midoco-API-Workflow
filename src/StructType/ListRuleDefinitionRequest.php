@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListRuleDefinitionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListRuleDefinitionRequest extends AbstractStructBase
 {
     /**

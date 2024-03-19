@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListRuleCriteriaCrmResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListRuleCriteriaCrmResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListRuleCriteriaCrmResponse extends AbstractStructBase
      * - ref: MidocoRuleCriteriaCrm
      * @var \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaCrmDTO[]
      */
-    protected array $MidocoRuleCriteriaCrm = [];
+    protected ?array $MidocoRuleCriteriaCrm = null;
     /**
      * Constructor method for ListRuleCriteriaCrmResponse
      * @uses ListRuleCriteriaCrmResponse::setMidocoRuleCriteriaCrm()
      * @param \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaCrmDTO[] $midocoRuleCriteriaCrm
      */
-    public function __construct(array $midocoRuleCriteriaCrm = [])
+    public function __construct(?array $midocoRuleCriteriaCrm = null)
     {
         $this
             ->setMidocoRuleCriteriaCrm($midocoRuleCriteriaCrm);
@@ -36,18 +37,22 @@ class ListRuleCriteriaCrmResponse extends AbstractStructBase
      * Get MidocoRuleCriteriaCrm value
      * @return \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaCrmDTO[]
      */
-    public function getMidocoRuleCriteriaCrm(): array
+    public function getMidocoRuleCriteriaCrm(): ?array
     {
         return $this->MidocoRuleCriteriaCrm;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRuleCriteriaCrm method
+     * This method is responsible for validating the value(s) passed to the setMidocoRuleCriteriaCrm method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRuleCriteriaCrm method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRuleCriteriaCrmForArrayConstraintsFromSetMidocoRuleCriteriaCrm(array $values = []): string
+    public static function validateMidocoRuleCriteriaCrmForArrayConstraintFromSetMidocoRuleCriteriaCrm(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listRuleCriteriaCrmResponseMidocoRuleCriteriaCrmItem) {
@@ -69,10 +74,10 @@ class ListRuleCriteriaCrmResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\RuleCriteriaCrmDTO[] $midocoRuleCriteriaCrm
      * @return \Pggns\MidocoApi\Workflow\StructType\ListRuleCriteriaCrmResponse
      */
-    public function setMidocoRuleCriteriaCrm(array $midocoRuleCriteriaCrm = []): self
+    public function setMidocoRuleCriteriaCrm(?array $midocoRuleCriteriaCrm = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRuleCriteriaCrmArrayErrorMessage = self::validateMidocoRuleCriteriaCrmForArrayConstraintsFromSetMidocoRuleCriteriaCrm($midocoRuleCriteriaCrm))) {
+        if ('' !== ($midocoRuleCriteriaCrmArrayErrorMessage = self::validateMidocoRuleCriteriaCrmForArrayConstraintFromSetMidocoRuleCriteriaCrm($midocoRuleCriteriaCrm))) {
             throw new InvalidArgumentException($midocoRuleCriteriaCrmArrayErrorMessage, __LINE__);
         }
         $this->MidocoRuleCriteriaCrm = $midocoRuleCriteriaCrm;

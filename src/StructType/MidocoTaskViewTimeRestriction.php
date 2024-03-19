@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTaskViewTimeRestriction StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTaskViewTimeRestriction extends TaskViewTimeRestrictionDTO
 {
 }

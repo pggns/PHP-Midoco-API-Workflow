@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTaskDefinitonDescription StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTaskDefinitonDescription extends TaskDefinitionDescrDTO
 {
     /**

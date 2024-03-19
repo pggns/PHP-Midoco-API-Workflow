@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveGlobalNoticeCommentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveGlobalNoticeCommentResponse extends AbstractStructBase
 {
     /**

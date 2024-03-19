@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ArchiveDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ArchiveDTO extends AbstractStructBase
 {
     /**

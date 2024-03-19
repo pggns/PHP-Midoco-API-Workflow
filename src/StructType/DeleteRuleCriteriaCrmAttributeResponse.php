@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteRuleCriteriaCrmAttributeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteRuleCriteriaCrmAttributeResponse extends AbstractStructBase
 {
 }

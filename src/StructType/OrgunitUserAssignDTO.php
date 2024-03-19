@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrgunitUserAssignDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrgunitUserAssignDTO extends AbstractStructBase
 {
     /**

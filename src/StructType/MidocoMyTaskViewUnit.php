@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMyTaskViewUnit StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMyTaskViewUnit extends MyTaskViewUnitDTO
 {
 }

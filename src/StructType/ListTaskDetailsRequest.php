@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListTaskDetailsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListTaskDetailsRequest extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class ListTaskDetailsRequest extends AbstractStructBase
      * - ref: MidocoTaskViewColumns
      * @var \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[]
      */
-    protected array $MidocoTaskViewColumns = [];
+    protected ?array $MidocoTaskViewColumns = null;
     /**
      * The isCounterOnly
      * Meta information extracted from the WSDL
@@ -54,7 +55,7 @@ class ListTaskDetailsRequest extends AbstractStructBase
      * @param bool $isCounterOnly
      * @param int $maxRowCount
      */
-    public function __construct(?\Pggns\MidocoApi\Workflow\StructType\ListTaskDetailsCriteria $listTaskDetailsCriteria = null, array $midocoTaskViewColumns = [], ?bool $isCounterOnly = false, ?int $maxRowCount = 1000)
+    public function __construct(?\Pggns\MidocoApi\Workflow\StructType\ListTaskDetailsCriteria $listTaskDetailsCriteria = null, ?array $midocoTaskViewColumns = null, ?bool $isCounterOnly = false, ?int $maxRowCount = 1000)
     {
         $this
             ->setListTaskDetailsCriteria($listTaskDetailsCriteria)
@@ -85,18 +86,22 @@ class ListTaskDetailsRequest extends AbstractStructBase
      * Get MidocoTaskViewColumns value
      * @return \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[]
      */
-    public function getMidocoTaskViewColumns(): array
+    public function getMidocoTaskViewColumns(): ?array
     {
         return $this->MidocoTaskViewColumns;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTaskViewColumns method
+     * This method is responsible for validating the value(s) passed to the setMidocoTaskViewColumns method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTaskViewColumns method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTaskViewColumnsForArrayConstraintsFromSetMidocoTaskViewColumns(array $values = []): string
+    public static function validateMidocoTaskViewColumnsForArrayConstraintFromSetMidocoTaskViewColumns(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listTaskDetailsRequestMidocoTaskViewColumnsItem) {
@@ -118,10 +123,10 @@ class ListTaskDetailsRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[] $midocoTaskViewColumns
      * @return \Pggns\MidocoApi\Workflow\StructType\ListTaskDetailsRequest
      */
-    public function setMidocoTaskViewColumns(array $midocoTaskViewColumns = []): self
+    public function setMidocoTaskViewColumns(?array $midocoTaskViewColumns = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTaskViewColumnsArrayErrorMessage = self::validateMidocoTaskViewColumnsForArrayConstraintsFromSetMidocoTaskViewColumns($midocoTaskViewColumns))) {
+        if ('' !== ($midocoTaskViewColumnsArrayErrorMessage = self::validateMidocoTaskViewColumnsForArrayConstraintFromSetMidocoTaskViewColumns($midocoTaskViewColumns))) {
             throw new InvalidArgumentException($midocoTaskViewColumnsArrayErrorMessage, __LINE__);
         }
         $this->MidocoTaskViewColumns = $midocoTaskViewColumns;

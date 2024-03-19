@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListRuleCriteriaOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListRuleCriteriaOrderRequest extends AbstractStructBase
 {
     /**

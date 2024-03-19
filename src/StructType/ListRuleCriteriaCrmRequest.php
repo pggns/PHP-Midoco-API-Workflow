@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListRuleCriteriaCrmRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListRuleCriteriaCrmRequest extends AbstractStructBase
 {
     /**

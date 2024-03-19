@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SubjectAttributeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SubjectAttributeDTO extends AbstractStructBase
 {
     /**

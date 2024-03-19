@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTaskDetailsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTaskDetailsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetTaskDetailsResponse extends AbstractStructBase
      * - ref: TaskDetails
      * @var \Pggns\MidocoApi\Workflow\StructType\TaskDetails[]
      */
-    protected array $TaskDetails = [];
+    protected ?array $TaskDetails = null;
     /**
      * Constructor method for GetTaskDetailsResponse
      * @uses GetTaskDetailsResponse::setTaskDetails()
      * @param \Pggns\MidocoApi\Workflow\StructType\TaskDetails[] $taskDetails
      */
-    public function __construct(array $taskDetails = [])
+    public function __construct(?array $taskDetails = null)
     {
         $this
             ->setTaskDetails($taskDetails);
@@ -36,18 +37,22 @@ class GetTaskDetailsResponse extends AbstractStructBase
      * Get TaskDetails value
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskDetails[]
      */
-    public function getTaskDetails(): array
+    public function getTaskDetails(): ?array
     {
         return $this->TaskDetails;
     }
     /**
-     * This method is responsible for validating the values passed to the setTaskDetails method
+     * This method is responsible for validating the value(s) passed to the setTaskDetails method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTaskDetails method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTaskDetailsForArrayConstraintsFromSetTaskDetails(array $values = []): string
+    public static function validateTaskDetailsForArrayConstraintFromSetTaskDetails(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTaskDetailsResponseTaskDetailsItem) {
@@ -69,10 +74,10 @@ class GetTaskDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\TaskDetails[] $taskDetails
      * @return \Pggns\MidocoApi\Workflow\StructType\GetTaskDetailsResponse
      */
-    public function setTaskDetails(array $taskDetails = []): self
+    public function setTaskDetails(?array $taskDetails = null): self
     {
         // validation for constraint: array
-        if ('' !== ($taskDetailsArrayErrorMessage = self::validateTaskDetailsForArrayConstraintsFromSetTaskDetails($taskDetails))) {
+        if ('' !== ($taskDetailsArrayErrorMessage = self::validateTaskDetailsForArrayConstraintFromSetTaskDetails($taskDetails))) {
             throw new InvalidArgumentException($taskDetailsArrayErrorMessage, __LINE__);
         }
         $this->TaskDetails = $taskDetails;

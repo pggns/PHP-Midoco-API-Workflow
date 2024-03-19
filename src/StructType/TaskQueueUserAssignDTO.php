@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskQueueUserAssignDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskQueueUserAssignDTO extends AbstractStructBase
 {
     /**

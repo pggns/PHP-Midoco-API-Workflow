@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskViewSingleContext StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskViewSingleContext extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetGlobalNoticesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetGlobalNoticesRequest extends AbstractStructBase
 {
     /**

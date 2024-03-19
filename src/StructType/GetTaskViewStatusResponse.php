@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTaskViewStatusResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTaskViewStatusResponse extends AbstractStructBase
 {
     /**

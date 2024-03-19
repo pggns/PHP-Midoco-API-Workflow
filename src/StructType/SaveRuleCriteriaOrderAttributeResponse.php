@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveRuleCriteriaOrderAttributeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveRuleCriteriaOrderAttributeResponse extends AbstractStructBase
 {
 }

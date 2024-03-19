@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSubjectRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSubjectRequest extends AbstractStructBase
 {
     /**

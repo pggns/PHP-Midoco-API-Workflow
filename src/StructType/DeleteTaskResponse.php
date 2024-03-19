@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteTask --- return the action result
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteTaskResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskViewUnitDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskViewUnitDTO extends AbstractStructBase
 {
     /**

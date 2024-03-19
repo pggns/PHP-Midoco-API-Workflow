@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EnlistmentDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EnlistmentDTO extends AbstractStructBase
 {
     /**

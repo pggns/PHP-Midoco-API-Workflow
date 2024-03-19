@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskOverviewCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskOverviewCriteria extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class TaskOverviewCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $queueName = [];
+    protected ?array $queueName = null;
     /**
      * The unitName
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class TaskOverviewCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $unitName = [];
+    protected ?array $unitName = null;
     /**
      * The delegationUser
      * Meta information extracted from the WSDL
@@ -36,7 +37,7 @@ class TaskOverviewCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $delegationUser = [];
+    protected ?array $delegationUser = null;
     /**
      * The taskTypes
      * Meta information extracted from the WSDL
@@ -44,7 +45,7 @@ class TaskOverviewCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $taskTypes = [];
+    protected ?array $taskTypes = null;
     /**
      * The priorityFrom
      * @var int|null
@@ -112,7 +113,7 @@ class TaskOverviewCriteria extends AbstractStructBase
      * @param bool $showCreationUser
      * @param string $assignedQueue
      */
-    public function __construct(array $queueName = [], array $unitName = [], array $delegationUser = [], array $taskTypes = [], ?int $priorityFrom = null, ?string $fromDate = null, ?string $untilDate = null, ?string $delegationFromDate = null, ?string $delegationToDate = null, ?int $priorityTo = null, ?bool $showCreationUser = null, ?string $assignedQueue = null)
+    public function __construct(?array $queueName = null, ?array $unitName = null, ?array $delegationUser = null, ?array $taskTypes = null, ?int $priorityFrom = null, ?string $fromDate = null, ?string $untilDate = null, ?string $delegationFromDate = null, ?string $delegationToDate = null, ?int $priorityTo = null, ?bool $showCreationUser = null, ?string $assignedQueue = null)
     {
         $this
             ->setQueueName($queueName)
@@ -132,18 +133,22 @@ class TaskOverviewCriteria extends AbstractStructBase
      * Get queueName value
      * @return string[]
      */
-    public function getQueueName(): array
+    public function getQueueName(): ?array
     {
         return $this->queueName;
     }
     /**
-     * This method is responsible for validating the values passed to the setQueueName method
+     * This method is responsible for validating the value(s) passed to the setQueueName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setQueueName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateQueueNameForArrayConstraintsFromSetQueueName(array $values = []): string
+    public static function validateQueueNameForArrayConstraintFromSetQueueName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskOverviewCriteriaQueueNameItem) {
@@ -165,10 +170,10 @@ class TaskOverviewCriteria extends AbstractStructBase
      * @param string[] $queueName
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskOverviewCriteria
      */
-    public function setQueueName(array $queueName = []): self
+    public function setQueueName(?array $queueName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($queueNameArrayErrorMessage = self::validateQueueNameForArrayConstraintsFromSetQueueName($queueName))) {
+        if ('' !== ($queueNameArrayErrorMessage = self::validateQueueNameForArrayConstraintFromSetQueueName($queueName))) {
             throw new InvalidArgumentException($queueNameArrayErrorMessage, __LINE__);
         }
         $this->queueName = $queueName;
@@ -195,18 +200,22 @@ class TaskOverviewCriteria extends AbstractStructBase
      * Get unitName value
      * @return string[]
      */
-    public function getUnitName(): array
+    public function getUnitName(): ?array
     {
         return $this->unitName;
     }
     /**
-     * This method is responsible for validating the values passed to the setUnitName method
+     * This method is responsible for validating the value(s) passed to the setUnitName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUnitName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUnitNameForArrayConstraintsFromSetUnitName(array $values = []): string
+    public static function validateUnitNameForArrayConstraintFromSetUnitName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskOverviewCriteriaUnitNameItem) {
@@ -228,10 +237,10 @@ class TaskOverviewCriteria extends AbstractStructBase
      * @param string[] $unitName
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskOverviewCriteria
      */
-    public function setUnitName(array $unitName = []): self
+    public function setUnitName(?array $unitName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($unitNameArrayErrorMessage = self::validateUnitNameForArrayConstraintsFromSetUnitName($unitName))) {
+        if ('' !== ($unitNameArrayErrorMessage = self::validateUnitNameForArrayConstraintFromSetUnitName($unitName))) {
             throw new InvalidArgumentException($unitNameArrayErrorMessage, __LINE__);
         }
         $this->unitName = $unitName;
@@ -258,18 +267,22 @@ class TaskOverviewCriteria extends AbstractStructBase
      * Get delegationUser value
      * @return int[]
      */
-    public function getDelegationUser(): array
+    public function getDelegationUser(): ?array
     {
         return $this->delegationUser;
     }
     /**
-     * This method is responsible for validating the values passed to the setDelegationUser method
+     * This method is responsible for validating the value(s) passed to the setDelegationUser method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDelegationUser method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDelegationUserForArrayConstraintsFromSetDelegationUser(array $values = []): string
+    public static function validateDelegationUserForArrayConstraintFromSetDelegationUser(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskOverviewCriteriaDelegationUserItem) {
@@ -291,10 +304,10 @@ class TaskOverviewCriteria extends AbstractStructBase
      * @param int[] $delegationUser
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskOverviewCriteria
      */
-    public function setDelegationUser(array $delegationUser = []): self
+    public function setDelegationUser(?array $delegationUser = null): self
     {
         // validation for constraint: array
-        if ('' !== ($delegationUserArrayErrorMessage = self::validateDelegationUserForArrayConstraintsFromSetDelegationUser($delegationUser))) {
+        if ('' !== ($delegationUserArrayErrorMessage = self::validateDelegationUserForArrayConstraintFromSetDelegationUser($delegationUser))) {
             throw new InvalidArgumentException($delegationUserArrayErrorMessage, __LINE__);
         }
         $this->delegationUser = $delegationUser;
@@ -321,18 +334,22 @@ class TaskOverviewCriteria extends AbstractStructBase
      * Get taskTypes value
      * @return string[]
      */
-    public function getTaskTypes(): array
+    public function getTaskTypes(): ?array
     {
         return $this->taskTypes;
     }
     /**
-     * This method is responsible for validating the values passed to the setTaskTypes method
+     * This method is responsible for validating the value(s) passed to the setTaskTypes method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTaskTypes method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTaskTypesForArrayConstraintsFromSetTaskTypes(array $values = []): string
+    public static function validateTaskTypesForArrayConstraintFromSetTaskTypes(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskOverviewCriteriaTaskTypesItem) {
@@ -354,10 +371,10 @@ class TaskOverviewCriteria extends AbstractStructBase
      * @param string[] $taskTypes
      * @return \Pggns\MidocoApi\Workflow\StructType\TaskOverviewCriteria
      */
-    public function setTaskTypes(array $taskTypes = []): self
+    public function setTaskTypes(?array $taskTypes = null): self
     {
         // validation for constraint: array
-        if ('' !== ($taskTypesArrayErrorMessage = self::validateTaskTypesForArrayConstraintsFromSetTaskTypes($taskTypes))) {
+        if ('' !== ($taskTypesArrayErrorMessage = self::validateTaskTypesForArrayConstraintFromSetTaskTypes($taskTypes))) {
             throw new InvalidArgumentException($taskTypesArrayErrorMessage, __LINE__);
         }
         $this->taskTypes = $taskTypes;

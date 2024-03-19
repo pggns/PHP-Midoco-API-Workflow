@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TasklistRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TasklistRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class TasklistRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $user_value = [];
+    protected ?array $user_value = null;
     /**
      * The unit_name
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class TasklistRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $unit_name = [];
+    protected ?array $unit_name = null;
     /**
      * The type
      * @var string|null
@@ -85,7 +86,7 @@ class TasklistRequest extends AbstractStructBase
      * @param string $process
      * @param string $subject_type
      */
-    public function __construct(array $user_value = [], array $unit_name = [], ?string $type = null, ?bool $show_untimed = null, ?string $from_date = null, ?string $to_date = null, ?string $queue_name = null, ?string $process = null, ?string $subject_type = null)
+    public function __construct(?array $user_value = null, ?array $unit_name = null, ?string $type = null, ?bool $show_untimed = null, ?string $from_date = null, ?string $to_date = null, ?string $queue_name = null, ?string $process = null, ?string $subject_type = null)
     {
         $this
             ->setUser_value($user_value)
@@ -102,18 +103,22 @@ class TasklistRequest extends AbstractStructBase
      * Get user_value value
      * @return string[]
      */
-    public function getUser_value(): array
+    public function getUser_value(): ?array
     {
         return $this->user_value;
     }
     /**
-     * This method is responsible for validating the values passed to the setUser_value method
+     * This method is responsible for validating the value(s) passed to the setUser_value method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUser_value method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUser_valueForArrayConstraintsFromSetUser_value(array $values = []): string
+    public static function validateUser_valueForArrayConstraintFromSetUser_value(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $tasklistRequestUser_valueItem) {
@@ -135,10 +140,10 @@ class TasklistRequest extends AbstractStructBase
      * @param string[] $user_value
      * @return \Pggns\MidocoApi\Workflow\StructType\TasklistRequest
      */
-    public function setUser_value(array $user_value = []): self
+    public function setUser_value(?array $user_value = null): self
     {
         // validation for constraint: array
-        if ('' !== ($user_valueArrayErrorMessage = self::validateUser_valueForArrayConstraintsFromSetUser_value($user_value))) {
+        if ('' !== ($user_valueArrayErrorMessage = self::validateUser_valueForArrayConstraintFromSetUser_value($user_value))) {
             throw new InvalidArgumentException($user_valueArrayErrorMessage, __LINE__);
         }
         $this->user_value = $user_value;
@@ -165,18 +170,22 @@ class TasklistRequest extends AbstractStructBase
      * Get unit_name value
      * @return string[]
      */
-    public function getUnit_name(): array
+    public function getUnit_name(): ?array
     {
         return $this->unit_name;
     }
     /**
-     * This method is responsible for validating the values passed to the setUnit_name method
+     * This method is responsible for validating the value(s) passed to the setUnit_name method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUnit_name method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUnit_nameForArrayConstraintsFromSetUnit_name(array $values = []): string
+    public static function validateUnit_nameForArrayConstraintFromSetUnit_name(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $tasklistRequestUnit_nameItem) {
@@ -198,10 +207,10 @@ class TasklistRequest extends AbstractStructBase
      * @param string[] $unit_name
      * @return \Pggns\MidocoApi\Workflow\StructType\TasklistRequest
      */
-    public function setUnit_name(array $unit_name = []): self
+    public function setUnit_name(?array $unit_name = null): self
     {
         // validation for constraint: array
-        if ('' !== ($unit_nameArrayErrorMessage = self::validateUnit_nameForArrayConstraintsFromSetUnit_name($unit_name))) {
+        if ('' !== ($unit_nameArrayErrorMessage = self::validateUnit_nameForArrayConstraintFromSetUnit_name($unit_name))) {
             throw new InvalidArgumentException($unit_nameArrayErrorMessage, __LINE__);
         }
         $this->unit_name = $unit_name;

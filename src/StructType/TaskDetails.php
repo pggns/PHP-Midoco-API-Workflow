@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TaskDetails StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaskDetails extends Task
 {
     /**

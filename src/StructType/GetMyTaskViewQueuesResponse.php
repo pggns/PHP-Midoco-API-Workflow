@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMyTaskViewQueuesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMyTaskViewQueuesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMyTaskViewQueuesResponse extends AbstractStructBase
      * - ref: MidocoMyTaskViewQueue
      * @var \Pggns\MidocoApi\Workflow\StructType\MidocoMyTaskViewQueue[]
      */
-    protected array $MidocoMyTaskViewQueue = [];
+    protected ?array $MidocoMyTaskViewQueue = null;
     /**
      * Constructor method for GetMyTaskViewQueuesResponse
      * @uses GetMyTaskViewQueuesResponse::setMidocoMyTaskViewQueue()
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoMyTaskViewQueue[] $midocoMyTaskViewQueue
      */
-    public function __construct(array $midocoMyTaskViewQueue = [])
+    public function __construct(?array $midocoMyTaskViewQueue = null)
     {
         $this
             ->setMidocoMyTaskViewQueue($midocoMyTaskViewQueue);
@@ -36,18 +37,22 @@ class GetMyTaskViewQueuesResponse extends AbstractStructBase
      * Get MidocoMyTaskViewQueue value
      * @return \Pggns\MidocoApi\Workflow\StructType\MidocoMyTaskViewQueue[]
      */
-    public function getMidocoMyTaskViewQueue(): array
+    public function getMidocoMyTaskViewQueue(): ?array
     {
         return $this->MidocoMyTaskViewQueue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMyTaskViewQueue method
+     * This method is responsible for validating the value(s) passed to the setMidocoMyTaskViewQueue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMyTaskViewQueue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMyTaskViewQueueForArrayConstraintsFromSetMidocoMyTaskViewQueue(array $values = []): string
+    public static function validateMidocoMyTaskViewQueueForArrayConstraintFromSetMidocoMyTaskViewQueue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMyTaskViewQueuesResponseMidocoMyTaskViewQueueItem) {
@@ -69,10 +74,10 @@ class GetMyTaskViewQueuesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoMyTaskViewQueue[] $midocoMyTaskViewQueue
      * @return \Pggns\MidocoApi\Workflow\StructType\GetMyTaskViewQueuesResponse
      */
-    public function setMidocoMyTaskViewQueue(array $midocoMyTaskViewQueue = []): self
+    public function setMidocoMyTaskViewQueue(?array $midocoMyTaskViewQueue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMyTaskViewQueueArrayErrorMessage = self::validateMidocoMyTaskViewQueueForArrayConstraintsFromSetMidocoMyTaskViewQueue($midocoMyTaskViewQueue))) {
+        if ('' !== ($midocoMyTaskViewQueueArrayErrorMessage = self::validateMidocoMyTaskViewQueueForArrayConstraintFromSetMidocoMyTaskViewQueue($midocoMyTaskViewQueue))) {
             throw new InvalidArgumentException($midocoMyTaskViewQueueArrayErrorMessage, __LINE__);
         }
         $this->MidocoMyTaskViewQueue = $midocoMyTaskViewQueue;

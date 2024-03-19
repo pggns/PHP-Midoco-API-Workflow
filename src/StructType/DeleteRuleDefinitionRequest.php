@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteRuleDefinitionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteRuleDefinitionRequest extends AbstractStructBase
 {
     /**

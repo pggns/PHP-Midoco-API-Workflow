@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RuleDefinitionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RuleDefinitionDTO extends AbstractStructBase
 {
     /**

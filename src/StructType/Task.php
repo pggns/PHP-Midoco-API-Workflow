@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Task StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Task extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class Task extends AbstractStructBase
      * - ref: MidocoTaskAttribute
      * @var \Pggns\MidocoApi\Workflow\StructType\MidocoTaskAttribute[]
      */
-    protected array $MidocoTaskAttribute = [];
+    protected ?array $MidocoTaskAttribute = null;
     /**
      * The subject_id
      * @var int|null
@@ -218,7 +219,7 @@ class Task extends AbstractStructBase
      * @param bool $preventDateChange
      * @param int $userId
      */
-    public function __construct(array $midocoTaskAttribute = [], ?int $subject_id = null, ?string $userValue = null, ?string $activity = null, ?string $process = null, ?string $unit_name = null, ?string $process_role = null, ?string $delegateQueue = null, ?string $delegateUser = null, ?int $delegateUserId = null, ?string $delegateOrgunit = null, ?string $delegation_date = null, ?string $delegation_comment = null, ?bool $notify_on_complete = null, ?string $timestamp = null, ?string $time_limit = null, ?string $working_user = null, ?int $working_userId = null, ?string $work_timestamp = null, ?string $subject_description = null, ?string $activity_id = null, ?string $subject_type = null, ?bool $handle_manually = null, ?string $hints = null, ?int $priority = null, ?bool $manuallyCreatedTask = null, ?bool $preventDateChange = false, ?int $userId = null)
+    public function __construct(?array $midocoTaskAttribute = null, ?int $subject_id = null, ?string $userValue = null, ?string $activity = null, ?string $process = null, ?string $unit_name = null, ?string $process_role = null, ?string $delegateQueue = null, ?string $delegateUser = null, ?int $delegateUserId = null, ?string $delegateOrgunit = null, ?string $delegation_date = null, ?string $delegation_comment = null, ?bool $notify_on_complete = null, ?string $timestamp = null, ?string $time_limit = null, ?string $working_user = null, ?int $working_userId = null, ?string $work_timestamp = null, ?string $subject_description = null, ?string $activity_id = null, ?string $subject_type = null, ?bool $handle_manually = null, ?string $hints = null, ?int $priority = null, ?bool $manuallyCreatedTask = null, ?bool $preventDateChange = false, ?int $userId = null)
     {
         $this
             ->setMidocoTaskAttribute($midocoTaskAttribute)
@@ -254,18 +255,22 @@ class Task extends AbstractStructBase
      * Get MidocoTaskAttribute value
      * @return \Pggns\MidocoApi\Workflow\StructType\MidocoTaskAttribute[]
      */
-    public function getMidocoTaskAttribute(): array
+    public function getMidocoTaskAttribute(): ?array
     {
         return $this->MidocoTaskAttribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTaskAttribute method
+     * This method is responsible for validating the value(s) passed to the setMidocoTaskAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTaskAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTaskAttributeForArrayConstraintsFromSetMidocoTaskAttribute(array $values = []): string
+    public static function validateMidocoTaskAttributeForArrayConstraintFromSetMidocoTaskAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $taskMidocoTaskAttributeItem) {
@@ -287,10 +292,10 @@ class Task extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoTaskAttribute[] $midocoTaskAttribute
      * @return \Pggns\MidocoApi\Workflow\StructType\Task
      */
-    public function setMidocoTaskAttribute(array $midocoTaskAttribute = []): self
+    public function setMidocoTaskAttribute(?array $midocoTaskAttribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTaskAttributeArrayErrorMessage = self::validateMidocoTaskAttributeForArrayConstraintsFromSetMidocoTaskAttribute($midocoTaskAttribute))) {
+        if ('' !== ($midocoTaskAttributeArrayErrorMessage = self::validateMidocoTaskAttributeForArrayConstraintFromSetMidocoTaskAttribute($midocoTaskAttribute))) {
             throw new InvalidArgumentException($midocoTaskAttributeArrayErrorMessage, __LINE__);
         }
         $this->MidocoTaskAttribute = $midocoTaskAttribute;

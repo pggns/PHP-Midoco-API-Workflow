@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoTaskDefinitionDescriptionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoTaskDefinitionDescriptionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoTaskDefinitionDescriptionResponse extends AbstractStructBase
      * - ref: MidocoTaskDefinitonDescription
      * @var \Pggns\MidocoApi\Workflow\StructType\MidocoTaskDefinitonDescription[]
      */
-    protected array $MidocoTaskDefinitonDescription = [];
+    protected ?array $MidocoTaskDefinitonDescription = null;
     /**
      * Constructor method for GetMidocoTaskDefinitionDescriptionResponse
      * @uses GetMidocoTaskDefinitionDescriptionResponse::setMidocoTaskDefinitonDescription()
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoTaskDefinitonDescription[] $midocoTaskDefinitonDescription
      */
-    public function __construct(array $midocoTaskDefinitonDescription = [])
+    public function __construct(?array $midocoTaskDefinitonDescription = null)
     {
         $this
             ->setMidocoTaskDefinitonDescription($midocoTaskDefinitonDescription);
@@ -36,18 +37,22 @@ class GetMidocoTaskDefinitionDescriptionResponse extends AbstractStructBase
      * Get MidocoTaskDefinitonDescription value
      * @return \Pggns\MidocoApi\Workflow\StructType\MidocoTaskDefinitonDescription[]
      */
-    public function getMidocoTaskDefinitonDescription(): array
+    public function getMidocoTaskDefinitonDescription(): ?array
     {
         return $this->MidocoTaskDefinitonDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTaskDefinitonDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoTaskDefinitonDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTaskDefinitonDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTaskDefinitonDescriptionForArrayConstraintsFromSetMidocoTaskDefinitonDescription(array $values = []): string
+    public static function validateMidocoTaskDefinitonDescriptionForArrayConstraintFromSetMidocoTaskDefinitonDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoTaskDefinitionDescriptionResponseMidocoTaskDefinitonDescriptionItem) {
@@ -69,10 +74,10 @@ class GetMidocoTaskDefinitionDescriptionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoTaskDefinitonDescription[] $midocoTaskDefinitonDescription
      * @return \Pggns\MidocoApi\Workflow\StructType\GetMidocoTaskDefinitionDescriptionResponse
      */
-    public function setMidocoTaskDefinitonDescription(array $midocoTaskDefinitonDescription = []): self
+    public function setMidocoTaskDefinitonDescription(?array $midocoTaskDefinitonDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTaskDefinitonDescriptionArrayErrorMessage = self::validateMidocoTaskDefinitonDescriptionForArrayConstraintsFromSetMidocoTaskDefinitonDescription($midocoTaskDefinitonDescription))) {
+        if ('' !== ($midocoTaskDefinitonDescriptionArrayErrorMessage = self::validateMidocoTaskDefinitonDescriptionForArrayConstraintFromSetMidocoTaskDefinitonDescription($midocoTaskDefinitonDescription))) {
             throw new InvalidArgumentException($midocoTaskDefinitonDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoTaskDefinitonDescription = $midocoTaskDefinitonDescription;

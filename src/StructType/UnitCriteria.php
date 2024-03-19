@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UnitCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UnitCriteria extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class UnitCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $creationOrgunit = [];
+    protected ?array $creationOrgunit = null;
     /**
      * The delegateOrgunit
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class UnitCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $delegateOrgunit = [];
+    protected ?array $delegateOrgunit = null;
     /**
      * The negateDelegateOrgunit
      * Meta information extracted from the WSDL
@@ -45,7 +46,7 @@ class UnitCriteria extends AbstractStructBase
      * @param string[] $delegateOrgunit
      * @param bool $negateDelegateOrgunit
      */
-    public function __construct(array $creationOrgunit = [], array $delegateOrgunit = [], ?bool $negateDelegateOrgunit = false)
+    public function __construct(?array $creationOrgunit = null, ?array $delegateOrgunit = null, ?bool $negateDelegateOrgunit = false)
     {
         $this
             ->setCreationOrgunit($creationOrgunit)
@@ -56,18 +57,22 @@ class UnitCriteria extends AbstractStructBase
      * Get creationOrgunit value
      * @return string[]
      */
-    public function getCreationOrgunit(): array
+    public function getCreationOrgunit(): ?array
     {
         return $this->creationOrgunit;
     }
     /**
-     * This method is responsible for validating the values passed to the setCreationOrgunit method
+     * This method is responsible for validating the value(s) passed to the setCreationOrgunit method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCreationOrgunit method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCreationOrgunitForArrayConstraintsFromSetCreationOrgunit(array $values = []): string
+    public static function validateCreationOrgunitForArrayConstraintFromSetCreationOrgunit(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $unitCriteriaCreationOrgunitItem) {
@@ -89,10 +94,10 @@ class UnitCriteria extends AbstractStructBase
      * @param string[] $creationOrgunit
      * @return \Pggns\MidocoApi\Workflow\StructType\UnitCriteria
      */
-    public function setCreationOrgunit(array $creationOrgunit = []): self
+    public function setCreationOrgunit(?array $creationOrgunit = null): self
     {
         // validation for constraint: array
-        if ('' !== ($creationOrgunitArrayErrorMessage = self::validateCreationOrgunitForArrayConstraintsFromSetCreationOrgunit($creationOrgunit))) {
+        if ('' !== ($creationOrgunitArrayErrorMessage = self::validateCreationOrgunitForArrayConstraintFromSetCreationOrgunit($creationOrgunit))) {
             throw new InvalidArgumentException($creationOrgunitArrayErrorMessage, __LINE__);
         }
         $this->creationOrgunit = $creationOrgunit;
@@ -119,18 +124,22 @@ class UnitCriteria extends AbstractStructBase
      * Get delegateOrgunit value
      * @return string[]
      */
-    public function getDelegateOrgunit(): array
+    public function getDelegateOrgunit(): ?array
     {
         return $this->delegateOrgunit;
     }
     /**
-     * This method is responsible for validating the values passed to the setDelegateOrgunit method
+     * This method is responsible for validating the value(s) passed to the setDelegateOrgunit method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDelegateOrgunit method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDelegateOrgunitForArrayConstraintsFromSetDelegateOrgunit(array $values = []): string
+    public static function validateDelegateOrgunitForArrayConstraintFromSetDelegateOrgunit(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $unitCriteriaDelegateOrgunitItem) {
@@ -152,10 +161,10 @@ class UnitCriteria extends AbstractStructBase
      * @param string[] $delegateOrgunit
      * @return \Pggns\MidocoApi\Workflow\StructType\UnitCriteria
      */
-    public function setDelegateOrgunit(array $delegateOrgunit = []): self
+    public function setDelegateOrgunit(?array $delegateOrgunit = null): self
     {
         // validation for constraint: array
-        if ('' !== ($delegateOrgunitArrayErrorMessage = self::validateDelegateOrgunitForArrayConstraintsFromSetDelegateOrgunit($delegateOrgunit))) {
+        if ('' !== ($delegateOrgunitArrayErrorMessage = self::validateDelegateOrgunitForArrayConstraintFromSetDelegateOrgunit($delegateOrgunit))) {
             throw new InvalidArgumentException($delegateOrgunitArrayErrorMessage, __LINE__);
         }
         $this->delegateOrgunit = $delegateOrgunit;

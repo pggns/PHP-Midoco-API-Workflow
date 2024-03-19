@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMidocoTaskQueueRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoTaskQueueRequest extends AbstractStructBase
 {
     /**

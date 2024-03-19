@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMyTaskViewUnitsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMyTaskViewUnitsResponse extends AbstractStructBase
 {
 }

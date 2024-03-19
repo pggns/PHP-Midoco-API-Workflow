@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListRuleDefinitionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListRuleDefinitionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListRuleDefinitionResponse extends AbstractStructBase
      * - ref: MidocoRuleDefinition
      * @var \Pggns\MidocoApi\Workflow\StructType\RuleDefinitionDTO[]
      */
-    protected array $MidocoRuleDefinition = [];
+    protected ?array $MidocoRuleDefinition = null;
     /**
      * Constructor method for ListRuleDefinitionResponse
      * @uses ListRuleDefinitionResponse::setMidocoRuleDefinition()
      * @param \Pggns\MidocoApi\Workflow\StructType\RuleDefinitionDTO[] $midocoRuleDefinition
      */
-    public function __construct(array $midocoRuleDefinition = [])
+    public function __construct(?array $midocoRuleDefinition = null)
     {
         $this
             ->setMidocoRuleDefinition($midocoRuleDefinition);
@@ -36,18 +37,22 @@ class ListRuleDefinitionResponse extends AbstractStructBase
      * Get MidocoRuleDefinition value
      * @return \Pggns\MidocoApi\Workflow\StructType\RuleDefinitionDTO[]
      */
-    public function getMidocoRuleDefinition(): array
+    public function getMidocoRuleDefinition(): ?array
     {
         return $this->MidocoRuleDefinition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRuleDefinition method
+     * This method is responsible for validating the value(s) passed to the setMidocoRuleDefinition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRuleDefinition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRuleDefinitionForArrayConstraintsFromSetMidocoRuleDefinition(array $values = []): string
+    public static function validateMidocoRuleDefinitionForArrayConstraintFromSetMidocoRuleDefinition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listRuleDefinitionResponseMidocoRuleDefinitionItem) {
@@ -69,10 +74,10 @@ class ListRuleDefinitionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\RuleDefinitionDTO[] $midocoRuleDefinition
      * @return \Pggns\MidocoApi\Workflow\StructType\ListRuleDefinitionResponse
      */
-    public function setMidocoRuleDefinition(array $midocoRuleDefinition = []): self
+    public function setMidocoRuleDefinition(?array $midocoRuleDefinition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRuleDefinitionArrayErrorMessage = self::validateMidocoRuleDefinitionForArrayConstraintsFromSetMidocoRuleDefinition($midocoRuleDefinition))) {
+        if ('' !== ($midocoRuleDefinitionArrayErrorMessage = self::validateMidocoRuleDefinitionForArrayConstraintFromSetMidocoRuleDefinition($midocoRuleDefinition))) {
             throw new InvalidArgumentException($midocoRuleDefinitionArrayErrorMessage, __LINE__);
         }
         $this->MidocoRuleDefinition = $midocoRuleDefinition;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetGlobalNoticeCommentsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetGlobalNoticeCommentsRequest extends AbstractStructBase
 {
     /**

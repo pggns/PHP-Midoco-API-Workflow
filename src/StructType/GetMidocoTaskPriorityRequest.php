@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoTaskPriorityRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoTaskPriorityRequest extends AbstractStructBase
 {
     /**

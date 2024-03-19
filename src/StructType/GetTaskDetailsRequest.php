@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTaskDetailsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTaskDetailsRequest extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetTaskDetailsRequest extends AbstractStructBase
      * - ref: MidocoTaskViewColumns
      * @var \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[]
      */
-    protected array $MidocoTaskViewColumns = [];
+    protected ?array $MidocoTaskViewColumns = null;
     /**
      * The delegateQueue
      * @var string|null
@@ -125,7 +126,7 @@ class GetTaskDetailsRequest extends AbstractStructBase
      * @param int $creationUser
      * @param int $userId
      */
-    public function __construct(array $midocoTaskViewColumns = [], ?string $delegateQueue = null, ?int $delegateUser = null, ?string $delegateOrgunit = null, ?string $unitName = null, ?string $taskType = null, ?int $priority = null, ?int $fromPriority = null, ?int $toPriority = null, ?string $startTimeLimit = null, ?string $endTimeLimit = null, ?string $delegationFromDate = null, ?string $delegationToDate = null, ?int $creationUser = null, ?int $userId = null)
+    public function __construct(?array $midocoTaskViewColumns = null, ?string $delegateQueue = null, ?int $delegateUser = null, ?string $delegateOrgunit = null, ?string $unitName = null, ?string $taskType = null, ?int $priority = null, ?int $fromPriority = null, ?int $toPriority = null, ?string $startTimeLimit = null, ?string $endTimeLimit = null, ?string $delegationFromDate = null, ?string $delegationToDate = null, ?int $creationUser = null, ?int $userId = null)
     {
         $this
             ->setMidocoTaskViewColumns($midocoTaskViewColumns)
@@ -148,18 +149,22 @@ class GetTaskDetailsRequest extends AbstractStructBase
      * Get MidocoTaskViewColumns value
      * @return \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[]
      */
-    public function getMidocoTaskViewColumns(): array
+    public function getMidocoTaskViewColumns(): ?array
     {
         return $this->MidocoTaskViewColumns;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTaskViewColumns method
+     * This method is responsible for validating the value(s) passed to the setMidocoTaskViewColumns method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTaskViewColumns method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTaskViewColumnsForArrayConstraintsFromSetMidocoTaskViewColumns(array $values = []): string
+    public static function validateMidocoTaskViewColumnsForArrayConstraintFromSetMidocoTaskViewColumns(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTaskDetailsRequestMidocoTaskViewColumnsItem) {
@@ -181,10 +186,10 @@ class GetTaskDetailsRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Workflow\StructType\MidocoTaskViewColumns[] $midocoTaskViewColumns
      * @return \Pggns\MidocoApi\Workflow\StructType\GetTaskDetailsRequest
      */
-    public function setMidocoTaskViewColumns(array $midocoTaskViewColumns = []): self
+    public function setMidocoTaskViewColumns(?array $midocoTaskViewColumns = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTaskViewColumnsArrayErrorMessage = self::validateMidocoTaskViewColumnsForArrayConstraintsFromSetMidocoTaskViewColumns($midocoTaskViewColumns))) {
+        if ('' !== ($midocoTaskViewColumnsArrayErrorMessage = self::validateMidocoTaskViewColumnsForArrayConstraintFromSetMidocoTaskViewColumns($midocoTaskViewColumns))) {
             throw new InvalidArgumentException($midocoTaskViewColumnsArrayErrorMessage, __LINE__);
         }
         $this->MidocoTaskViewColumns = $midocoTaskViewColumns;

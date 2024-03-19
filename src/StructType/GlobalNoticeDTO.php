@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GlobalNoticeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GlobalNoticeDTO extends AbstractStructBase
 {
     /**

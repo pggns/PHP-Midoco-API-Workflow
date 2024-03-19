@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarkVoidedGlobalNoticeCommentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarkVoidedGlobalNoticeCommentRequest extends AbstractStructBase
 {
     /**

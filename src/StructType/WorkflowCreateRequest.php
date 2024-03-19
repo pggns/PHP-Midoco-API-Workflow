@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for WorkflowCreateRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class WorkflowCreateRequest extends AbstractStructBase
 {
     /**

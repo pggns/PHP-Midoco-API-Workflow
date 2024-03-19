@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTaskViewbyTimeRestrictionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTaskViewbyTimeRestrictionRequest extends AbstractStructBase
 {
     /**

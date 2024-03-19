@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AttachedTaskcreateResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AttachedTaskcreateResponse extends AbstractStructBase
 {
     /**
